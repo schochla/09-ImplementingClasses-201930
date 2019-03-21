@@ -45,6 +45,8 @@ class Point(object):
         self.x = x
         self.y = y
         self.moves = 0
+        self.startx = self.x
+        self.starty = self.y
 
     def __repr__(self):
         return "Point ({}, {})".format(self.x, self.y)
@@ -72,6 +74,28 @@ class Point(object):
         return distance
 
     def get_distance_from_start(self):
+        distance_x = self.startx - self.x
+        distance_y = self.starty - self.y
+        distance = math.sqrt((distance_x ** 2) + (distance_y ** 2))
+        return distance
+
+    def get_distance_traveled(self):
+        distance_x = self.x - self.startx
+        distance_y = self.y - self.starty
+        distance = distance_y + distance_x
+        return distance
+
+    def closer_to(self, point2, point3):
+        distance_x1 = point2.x - self.x
+        distance_y1 = point2.y - self.y
+        distance1 = math.sqrt((distance_x1 ** 2) + (distance_y1 ** 2))
+        distance_x2 = point3.x - self.x
+        distance_y2 = point3.y - self.y
+        distance2 = math.sqrt((distance_x2 ** 2) + (distance_y2 ** 2))
+        if distance1 > distance2:
+            return point2
+        else:
+            return point3
 
 ###############################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
@@ -811,7 +835,7 @@ def run_test_get_distance_from_start():
         print('Actually is:', p2.get_distance_from_start())
     """
     # -------------------------------------------------------------------------
-    # TODO: 10.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 10.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_from_start  method specified above.
     # -------------------------------------------------------------------------
     print()
@@ -895,7 +919,7 @@ def run_test_get_distance_traveled():
         print('Actual:', p4.get_distance_traveled())
     """
     # -------------------------------------------------------------------------
-    # TODO: 11.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 11.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_traveled  method specified above.
     # -------------------------------------------------------------------------
     print()
