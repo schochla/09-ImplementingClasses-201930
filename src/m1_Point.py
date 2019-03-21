@@ -97,6 +97,11 @@ class Point(object):
         else:
             return point3
 
+    def halfway_to(self, point2):
+        half_x = (point2.x + self.x) / 2
+        half_y = (point2.y + self.y) / 2
+        return "Point ({}, {})".format(half_x, half_y)
+
 ###############################################################################
 # NOTE: For ALL of the methods that you implement, the method is allowed
 # to have additional side effects as needed by it and/or other methods.
@@ -1004,7 +1009,7 @@ def run_test_closer_to():
         print('Actual:  ', p1.closer_to(p4, p5) is p5)
     """
     # -------------------------------------------------------------------------
-    # TODO: 12.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 12.  Follow the same instructions as in TO-DO 3 above,
     #    but for the  closer_to  method specified above.
     # -------------------------------------------------------------------------
     print()
